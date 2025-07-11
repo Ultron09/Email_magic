@@ -51,10 +51,12 @@ export async function loginAction(prevState: any, formData: FormData) {
       maxAge: 60 * 60 * 24, // 1 day
       path: '/',
     });
+    // Redirect only on successful login
+    redirect('/dashboard');
   } else {
+    // Return error for invalid credentials
     return { success: false, error: 'Invalid username or password.' };
   }
-  redirect('/dashboard');
 }
 
 export async function logoutAction() {
